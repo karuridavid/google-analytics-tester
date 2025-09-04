@@ -1,9 +1,23 @@
-<form method="post">
-	<input type="url" name="ga_test_url" id="ga_test_url" placeholder="Enter Website URL" required style="width: 100%;max-width:400px" /><br><br>
-	<button type="submit">Check for Google Analytics</button>
-</form>
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ga_test_url'])) {
-	include plugin_dir_path(__FILE__) . 'report.php';
-}
+/**
+ * Frontend template for the Google Analytics Tester form.
+ */
 ?>
+
+<div class="ga-tester-container" id="gatester-root">
+  <form class="ga-tester-form" id="gatester-form" novalidate>
+    <div class="ga-form-group">
+      <label class="ga-form-label" for="gatester-url">Please Enter your Website URL</label>
+      <input class="ga-url-input" type="url" id="gatester-url" name="gatester-url" placeholder="https://example.com" required>
+    </div>
+    <button class="ga-submit-btn" id="gatester-submit" type="submit">Check for Google Analytics</button>
+  </form>
+
+  <div class="ga-loading" id="gatester-loading" aria-hidden="true">
+    <div class="ga-spinner"></div>
+    <span>Analyzing website...</span>
+  </div>
+
+  <div class="ga-result" id="gatester-result" aria-live="polite"></div>
+
+</div>
